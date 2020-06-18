@@ -4,19 +4,19 @@
 # Application configuration
 # Enable fakeUser to bypass standard authentication in a development environment
 application {
-    baseUrl             =   "http://localhost:9000"
+    baseUrl             =   "http://hangar.minidigger.me"
     baseUrl             =   ${?BASE_URL}
-    discourse-url       =   "https://forums.spongepowered.org"
-    discourse-cdn-url   =   "https://forums-cdn.spongepowered.org"
+    discourse-url       =   "https://forums.minidigger.me"
+    discourse-cdn-url   =   "https://forums-cdn.minidigger.me"
 
     uploadsDir = "uploads"
     uploadsDir = ${?UPLOADS_DIR}
 
     # Add a dot at the start of the url to trust all subdomains
-    trustedUrlHosts     =   [ ".spongepowered.org" ]
+    trustedUrlHosts     =   [ ".minidigger.me", "spongeauth" ]
 
     fakeUser {
-        enabled    =   false
+        enabled    =   true
         id         =   -1
         name       =   "Spongie"
         username   =   "Spongie"
@@ -51,7 +51,7 @@ play {
         }
 
         hosts {
-            allowed = [".spongepowered.org", "localhost:9000", "localhost:9443"]
+            allowed = [".minidigger.me", "localhost:9000", "localhost:9443"]
         }
     }
 
@@ -152,7 +152,7 @@ ore {
 
     orgs {
         enabled = true
-        dummyEmailDomain = "ore.spongepowered.org"
+        dummyEmailDomain = "hanagar.minidigger.me"
         createLimit = 5
     }
 
@@ -220,7 +220,7 @@ slick.dbs.default {
 # Sponge stuff
 sponge {
     logo = "https://www.spongepowered.org/assets/img/icons/spongie-mark.svg"
-    service = "Ore"
+    service = "Hangar"
 
     # Sponsors from high to low donation amounts
     sponsors = [

@@ -1,8 +1,8 @@
 # Strings localized for en-US locale
 
-general.appName                 =   Ore
-general.projectName             =   Sponge
-general.organization            =   SpongePowered
+general.appName                 =   Hangar
+general.projectName             =   Paper
+general.organization            =   PaperMC
 general.terms                   =   Terms of Service
 general.contact                 =   Support Forum
 general.about                   =   About
@@ -10,9 +10,9 @@ general.issues                  =   Issues
 general.source                  =   Source
 general.api                     =   API
 general.sponsors                =   Sponsors
-general.description             =   A Minecraft Package Repository
-general.title                   =   Ore - A Minecraft Package Repository
-general.openapi                 =   Ore OpenAPI specification
+general.description             =   A Paper Plugin Repository
+general.title                   =   Hangar - A Paper Plugin Repository
+general.openapi                 =   Hangar OpenAPI specification
 general.signout                 =   Sign out
 general.signup                  =   Sign up
 general.login                   =   Log in
@@ -41,16 +41,16 @@ general.featuredSponsor         =   Featured Sponsor
 general.create                  =   Create
 general.remove                  =   Remove
 general.update                  =   Update
-general.forumsUnavailable       =   Sponge Forums are currently unavailable, please try again later.
-general.viewOnForums            =   View on Sponge Forums
+general.forumsUnavailable       =   Paper Forums are currently unavailable, please try again later.
+general.viewOnForums            =   View on Paper Forums
 general.learnMore               =   Learn more
 general.optional                =   optional
-general.spongeApi               =   SpongeAPI
+general.spongeApi               =   PaperAPI
 general.minecraft               =   Minecraft
 general.forge                   =   Forge
-general.sponge                  =   Sponge
-general.spongePlugin            =   Sponge Plugin
-general.spongePlugin.tooltip    =   To mark your project as a Sponge plugin, add spongeapi as a dependency.
+general.sponge                  =   Paper
+general.spongePlugin            =   Paper Plugin
+general.spongePlugin.tooltip    =   To mark your project as a Paper plugin, add paperapi as a dependency.
 general.forgeMod                =   Forge Mod
 general.forgeMod.tooltip        =   To mark your project as a Forge mod, add forge as a dependency.
 general.any                     =   Any
@@ -62,9 +62,9 @@ general.linkout.title           =   External Link Warning
 general.linkout.warning         =   You have clicked on an external link to "{0}". If you did not intend to visit this link, please go back. Otherwise, click continue.
 general.restore                 =   Restore deleted
 general.harddelete              =   Hard delete
-general.stagingWarning          =   This is a staging server for testing purposes. Data could be deleted at any time. Please use our production server at https://ore.spongepowered.org for uploading your plugins!
+general.stagingWarning          =   This is a staging server for testing purposes. Data could be deleted at any time. Please use our production server at https://hangar.minidigger.me for uploading your plugins!
 
-admin.health.title = Ore Health Report
+admin.health.title = Hangar Health Report
 admin.health.discuss = Missing discussion topic
 admin.health.hidden = Hidden projects
 admin.health.stale = Stale projects
@@ -98,12 +98,12 @@ error.org.cannotUpdateAvatar    =   Unable to update avatar at this time.
 error.version.invalidPluginId   =   The uploaded plugin ID must match your project's plugin ID.
 error.version.illegalVersion    =   The name of this version is not allowed.
 error.version.duplicate         =   Found a duplicate file in project. Plugin files may only be uploaded once.
-error.version.noDependency.sponge = This project is marked as a Sponge plugin but your uploaded file contains no dependency to Sponge. Please add a dependency to spongeapi and re-upload.
+error.version.noDependency.sponge = This project is marked as a Paper plugin but your uploaded file contains no dependency to Paper. Please add a dependency to paperapi and re-upload.
 error.version.noDependency.forge = This project is marked as a Forge mod but your uploaded file contains no dependency to Forge. Please add a dependency to forge and re-upload.
 error.user.locked               =   Your account is locked.
 error.ore.timeout               =   Timeout
-error.ore.timeout.title         =   Ore took too long to respond.
-error.ore.timeout.body          =   Whoops! We couldn't respond to your request in a timely manner, this could be because a service Ore uses is currently unavailable or the servers are just overloaded. Please try again later.
+error.ore.timeout.title         =   Hangar took too long to respond.
+error.ore.timeout.body          =   Whoops! We couldn't respond to your request in a timely manner, this could be because a service Hangar uses is currently unavailable or the servers are just overloaded. Please try again later.
 error.notFound.title            =   404 Not Found
 error.notFound.message          =   The URI "{0}" could not be found
 error.required.comment          =   A comment is required
@@ -116,7 +116,7 @@ error.plugin.invalidPluginId    =   Invalid plugin ID for new version.
 error.plugin.versionExists      =   The version you tried to upload already exists.
 error.plugin.noVersion          =   Plugin meta file missing version field.
 error.plugin.incomplete         =   Plugin meta file missing required field "{0}".
-error.plugin.notSponge          =   Project is marked as a Sponge Plugin and new version contains no dependency to Sponge.
+error.plugin.notSponge          =   Project is marked as a Paper Plugin and new version contains no dependency to Paper.
 error.plugin.notForge           =   Project is marked as a Forge Mod and new version contains no dependency to Forge.
 error.plugin.fileName           =   Filename already in use. Please rename your file and try again.
 error.plugin.owner              =   Uploading under the wrong owner.
@@ -124,7 +124,7 @@ error.plugin.stateChanged       =   Something changed when you tried to download
 error.plugin.noConfirmDownload  =   Could not verify your confirmation. It might have timed out, already been used, or something might have changed on your end.
 error.plugin.timeout            =   Version upload timed out, or you have not uploaded a plugin file.
 
-error.spongeauth.auth           =   Couldn't connect to SpongeAuth.
+error.spongeauth.auth           =   Couldn't connect to PaperAuth.
 error.spongeauth.parse          =   That name is invalid, please choose a name without spaces or symbols.
 
 page.edit.cannotDeleteHomepage  =   Your project's homepage cannot be deleted
@@ -138,7 +138,7 @@ project.category                =   Category
 project.category.plural         =   Categories
 project.delete.title            =   Delete project
 project.delete.info             =   Are you sure you want to delete your Project? This action cannot be undone. Please explain why you want to delete it.
-project.delete.info.uniqueid    =   WARNING: You or anybody else will not be able to use the plugin ID "{0}" in the future if you continue. If you are deleting your project to recreate it, please do not delete your project and contact the Ore staff for help.
+project.delete.info.uniqueid    =   WARNING: You or anybody else will not be able to use the plugin ID "{0}" in the future if you continue. If you are deleting your project to recreate it, please do not delete your project and contact the Hangar staff for help.
 project.download.recommend      =   Download the latest recommended version
 project.download.recommend.warn =   This project's recommended version has not been reviewed by our moderation staff and may not be safe for download.
 project.download.warn           =   This version has not been reviewed by our moderation staff and may not be safe for download.
@@ -177,7 +177,7 @@ project.create.uid              =   Unique ID
 project.create.selectFile       =   Select plugin file
 project.create.destination      =   Project will be created at {0}
 project.create.infoText.head    =   A project contains your downloads and the documentation for your plugin.
-project.create.infoText.guidelines = Before continuing, please review the <a href="https://docs.spongepowered.org/stable/en/ore/guidelines.html">Ore Submission Guidelines</a>.
+project.create.infoText.guidelines = Before continuing, please review the <a href="https://docs.spongepowered.org/stable/en/ore/guidelines.html">Hangar Submission Guidelines</a>.
 project.create.input.name       =   Project name
 project.create.input.pluginId   =   Plugin id
 project.create.input.category   =   Project category
@@ -186,11 +186,11 @@ project.create.issue-input      =   Issue tracker URL
 project.create.source-input     =   Source code URL
 project.icon                    =   Project icon
 project.version.new             =   New Version
-project.members.infoText.head   =   Project members are other users of Ore that have special access to your project. Different user "roles" define what a user can and cannot do to your project.
-project.members.infoText.bottom =   Ore was able to find <strong>{0}</strong> users who are registered with Ore in your plugin file.
+project.members.infoText.head   =   Project members are other users of Hangar that have special access to your project. Different user "roles" define what a user can and cannot do to your project.
+project.members.infoText.bottom =   Hangar was able to find <strong>{0}</strong> users who are registered with Hangar in your plugin file.
 project.search                  =   Search for projects.
 project.viewAuthors             =   View project creators.
-project.viewStaff               =   View Sponge staff.
+project.viewStaff               =   View Paper staff.
 project.removeMember            =   Remove member
 project.removeMember.confirm    =   Are you sure you want to remove this user?
 project.deleted                 =   Project "{0}" deleted.
@@ -210,7 +210,7 @@ project.log.visibility.title    = Visibility Log
 
 org.create          =   New Organization
 org.create.title    =   Create a new Organization
-org.info            =   Organizations allow you group users provide closer collaboration between them within your projects on Ore.
+org.info            =   Organizations allow you group users provide closer collaboration between them within your projects on Hangar.
 org.name            =   Organization name
 org.welcome         =   Welcome to your new organization! Start by changing your avatar by clicking on it.
 org.welcome.confirm =   Got it!
@@ -224,7 +224,7 @@ version.filename                =   File name
 version.fileSize                =   File size
 version.delete.cannotLast       =   Every project must have at least one version
 version.delete.alreadyDeleted   =   This version has already been deleted
-version.dependency.notOnOre     =   This plugin is not available for download on Ore
+version.dependency.notOnOre     =   This plugin is not available for download on Hangar
 version.dependency.no           =   This release has no dependencies
 version.create.pageTitle        =   Release a new version
 version.create.title            =   New project release
@@ -232,7 +232,7 @@ version.create.noDescription    =   No description given.
 version.create.upload           =   Upload
 version.create.selectFile       =   Select file
 version.create.publish          =   Publish
-version.create.tos              =   By clicking "Publish" you are agreeing to Ore's <a href="https://docs.spongepowered.org/stable/en/about/tos.html">Terms of Service</a>.
+version.create.tos              =   By clicking "Publish" you are agreeing to Hangar's <a href="https://docs.spongepowered.org/stable/en/about/tos.html">Terms of Service</a>.
 version.create.info             =   Release a new version for <strong>{0}</strong> (pluginid: {1}).
 version.create.unstable         =   Mark this version as unstable
 version.recommended             =   Recommended version
@@ -273,7 +273,7 @@ version.download.confirm.curl = \
   Please POST to the attached link to acknowledge this disclaimer and continue to the download. \
   curl -O -J -L -d -X "{0}&csrfToken={1}"
 
-version.download.confirm.wget = Sorry, but Ore does not support the use of wget. \
+version.download.confirm.wget = Sorry, but Hangar does not support the use of wget. \
   Please use the following curl instead:\n\
   curl -O -J -L "<url>"
 
@@ -373,9 +373,9 @@ prompt.confirm = Got it!
 prompt.changeAvatar.title = Change your avatar!
 prompt.changeAvatar.message = Welcome to your new organization! Start by changing your avatar by clicking on it.
 
-email.signature = Best regards,<br/>The team at SpongePowered
+email.signature = Best regards,<br/>The team at PaperMC
 email.accountUnlock.subject = User account unlocked
-email.accountUnlock.body = We have detected that you've recently unlocked your account with us on Ore. If you did not make this change, please change your password immediately and take the necessary precautions to secure your account, such as enabling two-factor authentication. Thank you.
+email.accountUnlock.body = We have detected that you've recently unlocked your account with us on Hangar. If you did not make this change, please change your password immediately and take the necessary precautions to secure your account, such as enabling two-factor authentication. Thank you.
 
 licenses.mit = MIT
 licenses.apache2.0 = Apache 2.0

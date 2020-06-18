@@ -1,0 +1,65 @@
+version: '3.7'
+
+services:
+  app:
+    image: registry.gitlab.com/minidigger/hangar
+    depends_on:
+      - 'db'
+      - 'spongeauth'
+      - 'mail'
+    stdin_open: true
+    environment:
+      JDBC_DATABASE_URL: "jdbc:postgresql://hangar_db/ore"
+      JDBC_DATABASE_PASSWORD: "changeme"
+      SPONGE_AUTH_URL: "http://hangar_spongeauth:8000"
+      APPLICATION_SECRET: "some_secret"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.hangar.loadbalancer.server.port=9000"
+      - "traefik.http.routers.hangar.rule=Host(`hangar.minidigger.me`)"
+      - "traefik.http.routers.hangar.entrypoints=web-secure"
+      - "traefik.http.routers.hangar.tls=true"
+      - "traefik.http.routers.hangar.tls.options=default"
+      - "traefik.http.routers.hangar.tls.certresolver=default"
+      - "traefik.http.routers.hangar.tls.domains[0].main=minidigger.me"
+      - "traefik.http.routers.hangar.tls.domains[0].sans=*.minidigger.me"
+    networks:
+      - web
+  db:
+    image: registry.gitlab.com/minidiggerdockerfiles/hangar-db
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 'changeme'
+      POSTGRES_DB: ore
+    volumes:
+    - db_data:/var/lib/postgresql/data
+    networks:
+      - web
+  mail:
+    image: mailhog/mailhog:latest
+    networks:
+      - web
+#spongeauth:
+#  image: lukegb/spongeauth:latest
+#  depends_on:
+#    - 'db'
+#  labels:
+#    - "traefik.enable=true"
+#    - "traefik.http.services.hangar-auth.loadbalancer.server.port=8000"
+#    - "traefik.http.routers.hangar-auth.rule=Host(`hangar-auth.minidigger.me`)"
+#    - "traefik.http.routers.hangar-auth.entrypoints=web-secure"
+#    - "traefik.http.routers.hangar-auth.tls=true"
+#    - "traefik.http.routers.hangar-auth.tls.options=default"
+#    - "traefik.http.routers.hangar-auth.tls.certresolver=default"
+#    - "traefik.http.routers.hangar-auth.tls.domains[0].main=minidigger.me"
+#    - "traefik.http.routers.hangar-auth.tls.domains[0].sans=*.minidigger.me"
+#  networks:
+#    - web
+
+networks:
+  web:
+    name: traefik-overlay
+    external: true
+
+volumes:
+  db_data:
