@@ -31,6 +31,8 @@ services:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: 'changeme'
       POSTGRES_DB: ore
+    ports:
+      - "5432:5432"
     volumes:
     - db_data:/var/lib/postgresql/data
     networks:
