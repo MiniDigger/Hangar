@@ -1,18 +1,21 @@
 package ore.models.project.io
 
 import scala.language.higherKinds
-
 import java.io.BufferedReader
+import java.util
+import java.util.UUID
 
 import scala.collection.mutable.ArrayBuffer
 import scala.jdk.CollectionConverters._
 import scala.util.control.NonFatal
-
 import ore.data.project.Dependency
 import ore.db.{DbRef, Model, ModelService}
 import ore.models.project.{TagColor, Version, VersionTag}
-
 import org.spongepowered.plugin.meta.McModInfo
+import org.yaml.snakeyaml.Yaml
+import org.yaml.snakeyaml.constructor.Constructor
+
+import scala.beans.BeanProperty
 
 /**
   * The metadata within a [[PluginFile]]
@@ -103,7 +106,7 @@ class PluginFileData(data: Seq[DataValue]) {
 }
 
 object PluginFileData {
-  val fileTypes: Seq[FileTypeHandler] = Seq(McModInfoHandler, ManifestHandler, ModTomlHandler)
+  val fileTypes: Seq[FileTypeHandler] = Seq(McModInfoHandler, ManifestHandler, ModTomlHandler, PluginYmlHandler)
 
   def fileNames: Seq[String] = fileTypes.map(_.fileName).distinct
 
@@ -207,4 +210,47 @@ object ModTomlHandler extends FileTypeHandler("mod.toml") {
   override def getData(bufferedReader: BufferedReader): Seq[DataValue] =
     // TODO: Get format from Forge once it has been decided on
     Nil
+}
+
+object PluginYmlHandler extends FileTypeHandler("plugin.yml") {
+
+  override def getData(bufferedReader: BufferedReader): Seq[DataValue] = {
+    val dataValues = new ArrayBuffer[DataValue]
+    try {
+      val yaml = new Yaml()
+      val value = yaml.load(bufferedReader).asInstanceOf[java.util.Map[String, Any]]
+      if (value == null || value.size() == 0) Nil
+      else {
+        if (value.containsKey("version"))
+          dataValues += StringDataValue("version", value.get("version").asInstanceOf[String])
+
+        if (value.containsKey("name" ))
+          dataValues += StringDataValue("name", value.get("name").asInstanceOf[String])
+
+        if (value.containsKey("description"))
+          dataValues += StringDataValue("description", value.get("description").asInstanceOf[String])
+
+        if (value.containsKey("website"))
+          dataValues += StringDataValue("url", value.get("website").asInstanceOf[String])
+
+//        if (value.containsKey("authors"))
+          //hangartodo figure this out
+//          dataValues += StringListValue("authors", value.get("authors").asInstanceOf[util.ArrayList[String]].asScala.seq)
+
+//        if (metadata.getDependencies != null) {
+//          val dependencies = metadata.getDependencies.asScala.map(p => Dependency(p.getId, Option(p.getVersion))).toSeq
+//          dataValues += DependencyDataValue("dependencies", dependencies)
+//        }
+
+        val version = Some(value.get("api-version").asInstanceOf[Double].toString).orElse(Some("unknown")).asInstanceOf[Some[String]]
+        dataValues += DependencyDataValue("dependencies", Seq(Dependency("paperapi", version)))
+
+        dataValues.toSeq
+      }
+    } catch {
+      case NonFatal(e) =>
+        e.printStackTrace()
+        Nil
+    }
+  }
 }

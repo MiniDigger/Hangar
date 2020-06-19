@@ -100,7 +100,8 @@ lazy val orePlayCommon: Project = project
       Deps.pluginMeta,
       Deps.slickPlay,
       Deps.zio,
-      Deps.zioCats
+      Deps.zioCats,
+      Deps.snakeYML
     ),
     aggregateReverseRoutes := Seq(ore)
   )

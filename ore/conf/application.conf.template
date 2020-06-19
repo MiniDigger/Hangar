@@ -219,7 +219,7 @@ slick.dbs.default {
 
 # Sponge stuff
 sponge {
-    logo = "https://www.spongepowered.org/assets/img/icons/spongie-mark.svg"
+    logo = "https://paper.readthedocs.io/en/latest/_images/papermc_logomark_500.png"
     service = "Hangar"
 
     # Sponsors from high to low donation amounts

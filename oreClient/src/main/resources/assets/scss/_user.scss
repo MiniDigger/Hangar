@@ -153,7 +153,7 @@
 
   thead {
     background-color: $dark;
-    color: #f6cf17;
+    color: $sponge_yellow;
     font-weight: bold;
     td:first-child { width: 40px; }
     td:not(:first-child) { cursor: pointer; }

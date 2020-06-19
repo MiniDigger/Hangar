@@ -99,8 +99,9 @@ trait ProjectFactory {
   ): ZIO[Blocking, String, PendingVersion] =
     for {
       plugin <- processPluginUpload(uploadData, uploader)
-        .ensure("error.version.invalidPluginId")(_.data.id.contains(project.pluginId))
-        .ensure("error.version.illegalVersion")(!_.data.version.contains("recommended"))
+        //hangartodo essentialsx has essentials as name...
+//        .ensure("error.version.invalidPluginId")(data => data.data.name.contains(project.name))
+//        .ensure("error.version.illegalVersion")(!_.data.version.contains("recommended")) // No clue what this check is
       headChannel <- project
         .channels(ModelView.now(Channel))
         .one
@@ -199,9 +200,10 @@ trait ProjectFactory {
       channelName: String
   ): Either[String, PendingVersion] = {
     val metaData = plugin.data
-    if (!metaData.id.contains(pluginId))
-      Left("error.plugin.invalidPluginId")
-    else if (metaData.version.isEmpty)
+    // hangartodo do we need this check?
+//    if (!metaData.name.contains(pluginId))
+//      Left("error.plugin.invalidPluginId")
+    /*else*/ if (metaData.version.isEmpty)
       Left("error.plugin.noVersion")
     else {
       // Create new pending version
