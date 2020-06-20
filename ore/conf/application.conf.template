@@ -13,10 +13,10 @@ application {
     uploadsDir = ${?UPLOADS_DIR}
 
     # Add a dot at the start of the url to trust all subdomains
-    trustedUrlHosts     =   [ ".minidigger.me", "spongeauth" ]
+    trustedUrlHosts     =   [ ".minidigger.me", "hangar_auth" ]
 
     fakeUser {
-        enabled    =   true
+        enabled    =   false
         id         =   -1
         name       =   "Spongie"
         username   =   "Spongie"
