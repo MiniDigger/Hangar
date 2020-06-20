@@ -26,7 +26,7 @@ services:
     networks:
       - web
     volumes:
-      - uploads:/home/ore/prod/bin/uploads
+      - uploads:/home/ore/prod/uploads
   db:
     image: registry.gitlab.com/minidiggerdockerfiles/hangar-db
     environment:

@@ -39,7 +39,7 @@ object Platform extends IntEnum[Platform] {
       ServerCategory,
       0,
       "paperapi",
-      TagColor.Cyan,
+      TagColor.Paper,
       "https://papermc.io/downloads"
     )
 
