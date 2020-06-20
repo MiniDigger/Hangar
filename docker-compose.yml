@@ -25,6 +25,8 @@ services:
       - "traefik.http.routers.hangar.tls.domains[0].sans=*.minidigger.me"
     networks:
       - web
+    volumes:
+      - uploads:/home/ore/prod/bin/uploads
   db:
     image: registry.gitlab.com/minidiggerdockerfiles/hangar-db
     environment:
@@ -65,3 +67,4 @@ networks:
 
 volumes:
   db_data:
+  uploads:
