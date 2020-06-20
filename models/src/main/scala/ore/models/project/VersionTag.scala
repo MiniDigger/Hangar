@@ -43,6 +43,8 @@ object TagColor extends IntEnum[TagColor] {
   case object SpongeCommon  extends TagColor(6, "#5d5dff", "#FFFFFF")
   case object Lantern       extends TagColor(7, "#4EC1B4", "#FFFFFF")
   case object Mixin         extends TagColor(8, "#FFA500", "#333333")
+  case object Paper         extends TagColor(27, "#0288d1", "#333333")
+  case object Velocity      extends TagColor(28, "#039be5", "#333333")
 
   //From the normal color enum
   case object Purple      extends TagColor(9, "#B400FF", "#FFFFFF")

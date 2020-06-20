@@ -14,7 +14,7 @@ Accept: application/json
 ### Authenticate key
 POST http://localhost:9000/api/v2/authenticate
 Accept: application/json
-Authorization: OreApi apikey={{api_key}}
+Authorization: HangarApi apikey={{api_key}}
 
 > {% client.global.set("api_session", response.body.session); %}
 
@@ -36,14 +36,14 @@ Content-Type: application/json
 
 ### Invalidate session
 DELETE http://localhost:9000/api/v2/sessions/current
-Authorization: OreApi session={{api_session}}
+Authorization: HangarApi session={{api_session}}
 Accept: application/json
 
 > {% client.global.clear("api_session"); %}
 
 ### Create a new key
 POST http://localhost:9000/api/v2/keys
-Authorization: OreApi session={{api_session}}
+Authorization: HangarApi session={{api_session}}
 Accept: application/json
 Content-Type: application/json
 
@@ -59,7 +59,7 @@ Content-Type: application/json
 
 ### Delete a key
 DELETE http://localhost:9000/api/v2/keys?name=Foo
-Authorization: OreApi session={{api_session}}
+Authorization: HangarApi session={{api_session}}
 Accept: application/json
 Content-Type: application/json
 
@@ -67,47 +67,47 @@ Content-Type: application/json
 
 ### Get current permissions
 GET http://localhost:9000/api/v2/permissions
-Authorization: OreApi session={{api_session}}
+Authorization: HangarApi session={{api_session}}
 Accept: application/json
 
 ### Project list
 GET http://localhost:9000/api/v2/projects
-Authorization: OreApi session={{api_session}}
+Authorization: HangarApi session={{api_session}}
 Accept: application/json
 
 ### Get single project
 GET http://localhost:9000/api/v2/projects/nucleus
-Authorization: OreApi session={{api_session}}
+Authorization: HangarApi session={{api_session}}
 Accept: application/json
 
 ### Get project members
 GET http://localhost:9000/api/v2/projects/nucleus/members
-Authorization: OreApi session={{api_session}}
+Authorization: HangarApi session={{api_session}}
 Accept: application/json
 
 ### Get project stats
 GET http://localhost:9000/api/v2/projects/nucleus/stats?fromDate=2019-06-01&toDate=2019-10-13
-Authorization: OreApi session={{api_session}}
+Authorization: HangarApi session={{api_session}}
 Accept: application/json
 
 ### Get project versions
 GET http://localhost:9000/api/v2/projects/nucleus/versions
-Authorization: OreApi session={{api_session}}
+Authorization: HangarApi session={{api_session}}
 Accept: application/json
 
 ### Get single project versions
 GET http://localhost:9000/api/v2/projects/nucleus/versions/1.9.0-S7.1
-Authorization: OreApi session={{api_session}}
+Authorization: HangarApi session={{api_session}}
 Accept: application/json
 
 ### Get version stats
 GET http://localhost:9000/api/v2/projects/nucleus/versions/1.9.0-S7.1/stats?fromDate=2019-06-01&toDate=2019-10-13
-Authorization: OreApi session={{api_session}}
+Authorization: HangarApi session={{api_session}}
 Accept: application/json
 
 ### Get user
 GET http://localhost:9000/api/v2/users/Spongie
-Authorization: OreApi session={{api_session}}
+Authorization: HangarApi session={{api_session}}
 Accept: application/json
 
 ###

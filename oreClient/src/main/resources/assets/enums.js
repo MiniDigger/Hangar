@@ -24,12 +24,7 @@ export class Platform {
         return [
             {id: "Paper", name: "Paper Plugins", parent: true, color: { background: "#F7Cf0D", foreground: "#333333" }},
             {id: "Waterfall", name: "Waterfall Plugins", parent: true, color: { background: "#F7Cf0D", foreground: "#333333" }},
-            // {id: "Sponge", name: "Sponge Plugins", parent: true, color: { background: "#F7Cf0D", foreground: "#333333" }},
-            // {id: "SpongeForge", name: "SpongeForge", color: { background: "#910020", foreground: "#FFFFFF" }},
-            // {id: "SpongeVanilla", name: "SpongeVanilla", color: { background: "#50C888", foreground: "#FFFFFF" }},
-            // {id: "SpongeCommon", name: "SpongeCommon", color: { background: "#5D5DFF", foreground: "#FFFFFF" }},
-            // {id: "Lantern", name: "Lantern", color: { background: "#4EC1B4", foreground: "#FFFFFF" }},
-            // {id: "Forge",  name: "Forge Mods", parent: true, color: { background: "#DFA86A", foreground: "#FFFFFF" }}
+            {id: "Velocity", name: "Velocity Plugins", parent: true, color: { background: "#039be5", foreground: "#333333" }}
         ];
     }
 

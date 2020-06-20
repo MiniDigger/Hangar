@@ -54,55 +54,16 @@ object Platform extends IntEnum[Platform] {
       "https://papermc.io/downloads"
     )
 
-//  case object Sponge
-//      extends Platform(
-//        0,
-//        "Sponge",
-//        SpongeCategory,
-//        0,
-//        "spongeapi",
-//        TagColor.Sponge,
-//        "https://spongepowered.org/downloads"
-//      )
-//
-//  case object SpongeForge
-//      extends Platform(
-//        2,
-//        "SpongeForge",
-//        SpongeCategory,
-//        2,
-//        "spongeforge",
-//        TagColor.SpongeForge,
-//        "https://www.spongepowered.org/downloads/spongeforge"
-//      )
-//
-//  case object SpongeVanilla
-//      extends Platform(
-//        3,
-//        "SpongeVanilla",
-//        SpongeCategory,
-//        2,
-//        "spongevanilla",
-//        TagColor.SpongeVanilla,
-//        "https://www.spongepowered.org/downloads/spongevanilla"
-//      )
-//
-//  case object SpongeCommon
-//      extends Platform(
-//        4,
-//        "SpongeCommon",
-//        SpongeCategory,
-//        1,
-//        "sponge",
-//        TagColor.SpongeCommon,
-//        "https://www.spongepowered.org/downloads"
-//      )
-//
-//  case object Lantern
-//      extends Platform(5, "Lantern", SpongeCategory, 2, "lantern", TagColor.Lantern, "https://www.lanternpowered.org/")
-//
-//  case object Forge
-//      extends Platform(1, "Forge", ForgeCategory, 0, "forge", TagColor.Forge, "https://files.minecraftforge.net/")
+  case object Velocity
+    extends Platform(
+      3,
+      "Velocity",
+      ProxyCategory,
+      3,
+      "velocity",
+      TagColor.Velocity,
+      "https://www.velocitypowered.com/"
+    )
 
   def getPlatforms(dependencyIds: Seq[String]): Seq[Platform] = {
     Platform.values

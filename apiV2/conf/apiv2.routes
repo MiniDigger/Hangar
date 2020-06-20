@@ -8,11 +8,11 @@
 #    Creates a new API session. Pass an API key to create an authenticated
 #    session. To create a public session, don't pass an Authorization header.
 #
-#    When passing an API key, you should use the scheme `OreApi`, and
-#    parameter `apikey`. An example would be `Authorization: OreApi apikey="foobar"`.
+#    When passing an API key, you should use the scheme `HangarApi`, and
+#    parameter `apikey`. An example would be `Authorization: HangarApi apikey="foobar"`.
 #
 #    The returned session should be specified in all following request as the
-#    parameter `session`. An example would be `Authorization: OreApi session="noisses"`
+#    parameter `session`. An example would be `Authorization: HangarApi session="noisses"`
 #  tags:
 #    - Sessions (Authentication)
 #  security:

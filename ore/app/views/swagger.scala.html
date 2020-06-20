@@ -74,7 +74,7 @@ Mostly copied from swagger-ui's index file
                         requestInterceptor: (req) => {
                             if (!req.loadSpec) {
                                 const promise = getApiSession().then((session) => {
-                                    req.headers.authorization = 'OreApi session=' + session;
+                                    req.headers.authorization = 'HangarApi session=' + session;
                                     return req;
                                 });
                                 // Workaround for fixing the curl URL

@@ -69,7 +69,7 @@ class ApiV2Controller(
   private def offsetOrZero(offset: Long)                         = math.max(offset, 0)
 
   private def parseAuthHeader(request: Request[_]): IO[Either[Unit, Result], HttpCredentials] = {
-    def unAuth[A: Writeable](msg: A) = Unauthorized(msg).withHeaders(WWW_AUTHENTICATE -> "OreApi")
+    def unAuth[A: Writeable](msg: A) = Unauthorized(msg).withHeaders(WWW_AUTHENTICATE -> "HangarApi")
 
     for {
       stringAuth <- ZIO.fromOption(request.headers.get(AUTHORIZATION)).mapError(Left.apply)
@@ -83,10 +83,10 @@ class ApiV2Controller(
       auth <- ZIO.fromEither(parsedAuth)
       creds = auth.credentials
       res <- {
-        if (creds.scheme == "OreApi")
+        if (creds.scheme == "HangarApi")
           ZIO.succeed(creds)
         else
-          ZIO.fail(Right(unAuth(ApiError("Invalid scheme for authorization. Needs to be OreApi"))))
+          ZIO.fail(Right(unAuth(ApiError("Invalid scheme for authorization. Needs to be HangarApi"))))
       }
     } yield res
   }
@@ -94,7 +94,7 @@ class ApiV2Controller(
   def apiAction: ActionRefiner[Request, ApiRequest] = new ActionRefiner[Request, ApiRequest] {
     def executionContext: ExecutionContext = ec
     override protected def refine[A](request: Request[A]): Future[Either[Result, ApiRequest[A]]] = {
-      def unAuth(msg: String) = Unauthorized(ApiError(msg)).withHeaders(WWW_AUTHENTICATE -> "OreApi")
+      def unAuth(msg: String) = Unauthorized(ApiError(msg)).withHeaders(WWW_AUTHENTICATE -> "HangarApi")
 
       val authRequest = for {
         creds <- parseAuthHeader(request)
@@ -192,7 +192,7 @@ class ApiV2Controller(
     lazy val sessionExpiration       = expiration(config.ore.api.session.expiration, request.body.expiresIn)
     lazy val publicSessionExpiration = expiration(config.ore.api.session.publicExpiration, request.body.expiresIn)
 
-    def unAuth(msg: String) = Unauthorized(ApiError(msg)).withHeaders(WWW_AUTHENTICATE -> "OreApi")
+    def unAuth(msg: String) = Unauthorized(ApiError(msg)).withHeaders(WWW_AUTHENTICATE -> "HangarApi")
 
     val uuidToken = UUID.randomUUID().toString
 
