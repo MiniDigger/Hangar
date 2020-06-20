@@ -5,13 +5,13 @@ services:
     image: registry.gitlab.com/minidigger/hangar
     depends_on:
       - 'db'
-      - 'spongeauth'
+      - 'auth'
       - 'mail'
     stdin_open: true
     environment:
       JDBC_DATABASE_URL: "jdbc:postgresql://hangar_db/ore"
       JDBC_DATABASE_PASSWORD: "changeme"
-      SPONGE_AUTH_URL: "http://hangar_spongeauth:8000"
+      SPONGE_AUTH_URL: "http://hangar_auth:8000"
       APPLICATION_SECRET: "some_secret"
     labels:
       - "traefik.enable=true"
@@ -41,22 +41,22 @@ services:
     image: mailhog/mailhog:latest
     networks:
       - web
-#spongeauth:
-#  image: lukegb/spongeauth:latest
-#  depends_on:
-#    - 'db'
-#  labels:
-#    - "traefik.enable=true"
-#    - "traefik.http.services.hangar-auth.loadbalancer.server.port=8000"
-#    - "traefik.http.routers.hangar-auth.rule=Host(`hangar-auth.minidigger.me`)"
-#    - "traefik.http.routers.hangar-auth.entrypoints=web-secure"
-#    - "traefik.http.routers.hangar-auth.tls=true"
-#    - "traefik.http.routers.hangar-auth.tls.options=default"
-#    - "traefik.http.routers.hangar-auth.tls.certresolver=default"
-#    - "traefik.http.routers.hangar-auth.tls.domains[0].main=minidigger.me"
-#    - "traefik.http.routers.hangar-auth.tls.domains[0].sans=*.minidigger.me"
-#  networks:
-#    - web
+  auth:
+    image: registry.gitlab.com/minidigger/hangarauth
+    depends_on:
+      - 'db'
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.hangar-auth.loadbalancer.server.port=8000"
+      - "traefik.http.routers.hangar-auth.rule=Host(`hangar-auth.minidigger.me`)"
+      - "traefik.http.routers.hangar-auth.entrypoints=web-secure"
+      - "traefik.http.routers.hangar-auth.tls=true"
+      - "traefik.http.routers.hangar-auth.tls.options=default"
+      - "traefik.http.routers.hangar-auth.tls.certresolver=default"
+      - "traefik.http.routers.hangar-auth.tls.domains[0].main=minidigger.me"
+      - "traefik.http.routers.hangar-auth.tls.domains[0].sans=*.minidigger.me"
+    networks:
+      - web
 
 networks:
   web:
