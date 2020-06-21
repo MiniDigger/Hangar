@@ -185,6 +185,7 @@
                 border-bottom: 1px solid #dddddd;
                 border-top: 1px solid #dddddd;
                 box-shadow: inset -10px 0px 0px 0px $sponge_yellow;
+                color: unset;
             }
         }
     }

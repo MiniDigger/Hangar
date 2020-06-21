@@ -1,14 +1,19 @@
 {
-  "name": "Ore - A Minecraft Package Repository",
-  "short_name": "Ore",
-  "theme_color": "#333",
-  "background_color": "#333",
+  "name": "Hangar - A Paper Plugin Repository",
+  "short_name": "Hangar",
+  "theme_color": "#1886cd",
+  "background_color": "#1886cd",
   "display": "standalone",
   "start_url": "/?homescreen=1",
   "icons": [
     {
-      "src": "/assets/images/ore-dark.png",
-      "sizes": "199x199",
+      "src": "https://papermc.io/favicons/android-chrome-192x192.png?v=BG70oBaPzN",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://papermc.io/favicons/android-chrome-384x384.png?v=BG70oBaPzN",
+      "sizes": "384x384",
       "type": "image/png"
     }
   ]

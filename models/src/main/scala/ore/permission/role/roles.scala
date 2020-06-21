@@ -54,10 +54,10 @@ sealed abstract class DonorRole(
 object Role extends StringEnum[Role] {
   lazy val byIds: Map[Int, Role] = values.map(r => r.roleId -> r).toMap
 
-  object OreAdmin extends Role("Ore_Admin", 1, RoleCategory.Global, Perm.All, "Ore Admin", Red)
-  object OreMod
+  object HangarAdmin extends Role("Hangar_Admin", 1, RoleCategory.Global, Perm.All, "Hangar Admin", Red)
+  object HangarMod
       extends Role(
-        "Ore_Mod",
+        "Hangar_Mod",
         2,
         RoleCategory.Global,
         Perm(
@@ -66,29 +66,29 @@ object Role extends StringEnum[Role] {
           Perm.ModNotesAndFlags,
           Perm.SeeHidden
         ),
-        "Ore Moderator",
+        "Hangar Moderator",
         Aqua
       )
-  object SpongeLeader    extends Role("Sponge_Leader", 3, RoleCategory.Global, Perm.None, "Sponge Leader", Amber)
+  object PaperLeader    extends Role("Paper_Leader", 3, RoleCategory.Global, Perm.None, "Paper Leader", Amber)
   object TeamLeader      extends Role("Team_Leader", 4, RoleCategory.Global, Perm.None, "Team Leader", Amber)
   object CommunityLeader extends Role("Community_Leader", 5, RoleCategory.Global, Perm.None, "Community Leader", Amber)
-  object SpongeStaff
+  object PaperStaff
       extends Role(
-        "Sponge_Staff",
+        "Paper_Staff",
         6,
         RoleCategory.Global,
         Perm.None,
-        "Sponge Staff",
+        "Paper Staff",
         Amber
       )
-  object SpongeDev extends Role("Sponge_Developer", 7, RoleCategory.Global, Perm.None, "Sponge Developer", Green)
-  object OreDev
+  object PaperDev extends Role("Paper_Developer", 7, RoleCategory.Global, Perm.None, "Paper Developer", Green)
+  object HangarDev
       extends Role(
-        "Ore_Dev",
+        "Hangar_Dev",
         8,
         RoleCategory.Global,
         Perm(Perm.ViewStats, Perm.ViewLogs, Perm.ViewHealth, Perm.ManualValueChanges),
-        "Ore Developer",
+        "Hangar Developer",
         Orange
       )
   object WebDev

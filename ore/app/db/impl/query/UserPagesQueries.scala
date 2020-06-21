@@ -81,7 +81,7 @@ object UserPagesQueries extends WebDoobieOreProtocol {
             |          FROM users u
             |                 JOIN user_global_roles ugr ON u.id = ugr.user_id
             |                 JOIN roles r ON ugr.role_id = r.id
-            |          WHERE r.name IN ('Ore_Admin', 'Ore_Mod')) sq
+            |          WHERE r.name IN ('Hangar_Admin', 'Hangar_Mod')) sq
             |  WHERE sq.rank = 1 """.stripMargin ++
         userFragOrder(reverse, sort) ++
         fr"""OFFSET $offset LIMIT $pageSize"""

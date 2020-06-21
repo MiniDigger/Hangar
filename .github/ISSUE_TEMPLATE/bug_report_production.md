@@ -1,6 +1,6 @@
 ---
 name: Bug report for the production instance
-about: Create a bug report for https://ore.spongepowered.org
+about: Create a bug report for https://hangar.minidigger.me
 title: ''
 labels: 'status: needs testing, type: bug report, environment: production'
 assignees: ''
@@ -8,9 +8,9 @@ assignees: ''
 ---
 
 <!--
-Please check if the error also occurs on our staging instance at https://ore.stage.spongemc.org.
+Please check if the error also occurs on our staging instance at https://hangar.minidigger.me.
 If so, enter the error details. Otherwise, the bug is already fixed and will disappear
-when we deploy the next version to the production server at https://ore.spongepowered.org.
+when we deploy the next version to the production server at https://hangar.minidigger.me.
 -->
 
 **Describe the bug**

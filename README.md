@@ -1,24 +1,23 @@
-# Ore
-![Build Status Ore](https://github.com/SpongePowered/Ore/workflows/Ore%20CI/badge.svg?branch=staging)
-![Build Status Scalafmt](https://github.com/SpongePowered/Ore/workflows/Scalafmt%20Check/badge.svg?branch=staging)
-[![Hydra](https://img.shields.io/badge/%22%22%22%7CHydra-4%20cpus-brightgreen.svg)](https://www.triplequote.com/hydra)
+# Hangar
 
-Repository software for Sponge plugins and Forge mods https://ore.spongepowered.org/
+Repository software for Paper plugins and other related projects https://hangar.minidigger.me/
  
-Ore is written in Scala using the [Play](https://www.playframework.com/) framework.
+Hangar is written in Scala using the [Play](https://www.playframework.com/) framework.
+
+Hangar is a fork of [Ore](https://github.com/SpongePowered/Ore)
 
 ### Clone
 The following steps will ensure your project is cloned properly.
 
-1. `git clone https://github.com/SpongePowered/Ore.git`   
+1. `git clone https://github.com/MiniDigger/Hangar.git`   
 2. `cp scripts/pre-commit .git/hooks`
 
 ### Setup
 
-After cloning Ore, the first thing you will want to do is create a new PostgreSQL 11 database for the application to use.
-This is required in order for Ore to run. Learn more about PostgreSQL [here](https://www.postgresql.org/).
+After cloning Hangar, the first thing you will want to do is create a new PostgreSQL 11 database for the application to use.
+This is required in order for Hangar to run. Learn more about PostgreSQL [here](https://www.postgresql.org/).
 
-You will also need to enable a few extensions for Ore. These are:
+You will also need to enable a few extensions for Hangar. These are:
 * [pgcrypto](https://www.postgresql.org/docs/11/pgcrypto.html)
 * [hstore](https://www.postgresql.org/docs/11/hstore.html)
 
@@ -37,7 +36,7 @@ For `ore`:
 
 ## Running
 
-Running Ore is relatively simple.
+Running Hangar is relatively simple.
 
 **With SBT**
 * Download and install the latest [SBT](http://www.scala-sbt.org/download.html) version.
@@ -58,7 +57,7 @@ For `jobs`:
 * Either repeat the process for `ore`, but use `jobs/run` instead of `ore/run`.
 * Or, click the green triangle next to `OreJobProcessorMain` when opening up the file.
 
-**Note:** You might encounter a stack overflow exception when compiling ore. This is not unexpected. Just assign 
+**Note:** You might encounter a stack overflow exception when compiling Hangar. This is not unexpected. Just assign 
 more stack size to sbt in the way you're starting sbt. `-Xss4m` should be enough. If you're using IntelliJ, you can set 
 this in the VM arguments field. If you're invoking sbt directly, the most common ways to set this is either through 
 the `SBT_OPTS` environment variable, or with a file named `.jvmopts` with each flag on a new line.

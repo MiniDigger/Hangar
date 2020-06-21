@@ -69,7 +69,7 @@ class Users(
           .getOrCreate(
             this.fakeUser.username,
             this.fakeUser,
-            ifInsert = fakeUser => fakeUser.globalRoles.addAssoc(Role.OreAdmin.toDbRole.id).unit
+            ifInsert = fakeUser => fakeUser.globalRoles.addAssoc(Role.HangarAdmin.toDbRole.id).unit
           )
           .flatMap(fakeUser => this.redirectBack(returnPath.getOrElse(request.path), fakeUser))
       } else if (sso.isEmpty || sig.isEmpty) {
