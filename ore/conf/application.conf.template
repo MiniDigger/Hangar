@@ -104,7 +104,7 @@ security {
 
 # Ore configuration
 ore {
-    debug       =  false
+    debug       =  true
     debug-level =  3
     staging     =  false
 
