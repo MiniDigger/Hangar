@@ -273,11 +273,11 @@ CREATE MATERIALIZED VIEW home_projects AS
                              WHEN pvti.name = 'Lantern'
                                  THEN NULL --TODO Change this once Lantern changes to SpongeVanilla's format
                              WHEN pvti.name = 'Paper'
-                                 THEN substring(pvti.data FROM '^\d+\.(\d+)\.\d+(?:\.\d+)?$')
+                                 THEN pvti.data
                              WHEN pvti.name = 'Waterfall'
-                                 THEN substring(pvti.data FROM '^\d+\.(\d+)\.\d+(?:\.\d+)?$')
+                                 THEN pvti.data
                              WHEN pvti.name = 'Velocity'
-                                 THEN substring(pvti.data FROM '^\d+\.(\d+)\.\d+(?:\.\d+)?$')
+                                 THEN pvti.data
                              ELSE NULL
                              END AS platform_version,
                          pvti.color

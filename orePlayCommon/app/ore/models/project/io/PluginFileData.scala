@@ -288,7 +288,7 @@ object BungeeYmlHandler extends FileTypeHandler("bungee.yml") {
           dataValues += DependencyDataValue("dependencies", dependencies)
         }
 
-        dataValues += DependencyDataValue("dependencies", Seq(Dependency("waterfall", Option.empty)))
+        dataValues += DependencyDataValue("dependencies", Seq(Dependency("waterfall", Some("unknown"))))
 
         dataValues.toSeq
       }
@@ -332,7 +332,7 @@ object VelocityFileHandler extends FileTypeHandler("velocity-plugin.json") {
           dataValues += DependencyDataValue("dependencies", dependencies)
         }
 
-        dataValues += DependencyDataValue("dependencies", Seq(Dependency("velocity", Option.empty)))
+        dataValues += DependencyDataValue("dependencies", Seq(Dependency("velocity", Some("unknown"))))
 
         dataValues.toSeq
       }

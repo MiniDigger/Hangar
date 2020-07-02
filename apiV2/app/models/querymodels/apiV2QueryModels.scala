@@ -178,19 +178,24 @@ object APIV2QueryProject {
                       }
                     }
                 } -> None //TODO
-                // hangartodo: figure out what this does
               case "Paper" =>
                 lowerBoundVersionStr.collect {
+                  case "Unknown" => version
                   case MajorMinor(version) => version
-                } -> None //TODO
+                  case _ => "Unknown"
+                } -> None
               case "Waterfall" =>
                 lowerBoundVersionStr.collect {
+                  case "Unknown" => version
                   case MajorMinor(version) => version
-                } -> None //TODO
+                  case _ => "Unknown"
+                } -> None
               case "Velocity" =>
                 lowerBoundVersionStr.collect {
+                  case "Unknown" => version
                   case MajorMinor(version) => version
-                } -> None //TODO
+                  case _ => "Unknown"
+                } -> None
               case _ => None -> None
             }
           }
