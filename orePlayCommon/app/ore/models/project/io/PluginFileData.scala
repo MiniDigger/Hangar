@@ -16,6 +16,8 @@ import org.yaml.snakeyaml.Yaml
 import org.yaml.snakeyaml.constructor.Constructor
 
 import scala.beans.BeanProperty
+import scala.collection.immutable.HashMap
+import scala.util.parsing.json.JSON
 
 /**
   * The metadata within a [[PluginFile]]
@@ -106,7 +108,7 @@ class PluginFileData(data: Seq[DataValue]) {
 }
 
 object PluginFileData {
-  val fileTypes: Seq[FileTypeHandler] = Seq(McModInfoHandler, ManifestHandler, ModTomlHandler, PluginYmlHandler)
+  val fileTypes: Seq[FileTypeHandler] = Seq(McModInfoHandler, ManifestHandler, ModTomlHandler, PluginYmlHandler, BungeeYmlHandler, VelocityFileHandler)
 
   def fileNames: Seq[String] = fileTypes.map(_.fileName).distinct
 
@@ -233,17 +235,104 @@ object PluginYmlHandler extends FileTypeHandler("plugin.yml") {
         if (value.containsKey("website"))
           dataValues += StringDataValue("url", value.get("website").asInstanceOf[String])
 
-//        if (value.containsKey("authors"))
-          //hangartodo figure this out
-//          dataValues += StringListValue("authors", value.get("authors").asInstanceOf[util.ArrayList[String]].asScala.seq)
+        if (value.containsKey("author"))
+          dataValues += StringListValue("authors", Seq(value.get("author").asInstanceOf[String]))
 
-//        if (metadata.getDependencies != null) {
-//          val dependencies = metadata.getDependencies.asScala.map(p => Dependency(p.getId, Option(p.getVersion))).toSeq
-//          dataValues += DependencyDataValue("dependencies", dependencies)
-//        }
+        if (value.containsKey("authors"))
+          dataValues += StringListValue("authors", value.get("authors").asInstanceOf[java.util.ArrayList[String]].asScala.toSeq)
+
+        if (value.containsKey("depend")) {
+          val dependencies = value.get("depend").asInstanceOf[java.util.ArrayList[String]].asScala.map(p => Dependency(p, Option.empty)).toSeq
+          dataValues += DependencyDataValue("dependencies", dependencies)
+        }
 
         val version = Some(value.get("api-version").asInstanceOf[Double].toString).orElse(Some("unknown")).asInstanceOf[Some[String]]
         dataValues += DependencyDataValue("dependencies", Seq(Dependency("paperapi", version)))
+
+        dataValues.toSeq
+      }
+    } catch {
+      case NonFatal(e) =>
+        e.printStackTrace()
+        Nil
+    }
+  }
+}
+
+object BungeeYmlHandler extends FileTypeHandler("bungee.yml") {
+
+  override def getData(bufferedReader: BufferedReader): Seq[DataValue] = {
+    val dataValues = new ArrayBuffer[DataValue]
+    try {
+      val yaml = new Yaml()
+      val value = yaml.load(bufferedReader).asInstanceOf[java.util.Map[String, Any]]
+      if (value == null || value.size() == 0) Nil
+      else {
+        if (value.containsKey("version"))
+          dataValues += StringDataValue("version", value.get("version").asInstanceOf[String])
+
+        if (value.containsKey("name" ))
+          dataValues += StringDataValue("name", value.get("name").asInstanceOf[String])
+
+        if (value.containsKey("description"))
+          dataValues += StringDataValue("description", value.get("description").asInstanceOf[String])
+
+        if (value.containsKey("website"))
+          dataValues += StringDataValue("url", value.get("website").asInstanceOf[String])
+
+        if (value.containsKey("author"))
+          dataValues += StringListValue("authors", Seq(value.get("author").asInstanceOf[String]))
+
+        if (value.containsKey("depends")) {
+          val dependencies = value.get("depends").asInstanceOf[java.util.ArrayList[String]].asScala.map(p => Dependency(p, Option.empty)).toSeq
+          dataValues += DependencyDataValue("dependencies", dependencies)
+        }
+
+        dataValues += DependencyDataValue("dependencies", Seq(Dependency("waterfall", Option.empty)))
+
+        dataValues.toSeq
+      }
+    } catch {
+      case NonFatal(e) =>
+        e.printStackTrace()
+        Nil
+    }
+  }
+}
+
+object VelocityFileHandler extends FileTypeHandler("velocity-plugin.json") {
+
+  override def getData(bufferedReader: BufferedReader): Seq[DataValue] = {
+    val dataValues = new ArrayBuffer[DataValue]
+    try {
+      val string = LazyList.continually(bufferedReader.readLine()).takeWhile(_ != null).mkString("\n")
+      val value = JSON.parseFull(string).asInstanceOf[Option[HashMap[String, Any]]].get
+      if (value == null || value.isEmpty) Nil
+      else {
+        if (value.contains("version"))
+          dataValues += StringDataValue("version", value.get("version").asInstanceOf[Some[String]].get)
+
+        if (value.contains("name" ))
+          dataValues += StringDataValue("name", value.get("name").asInstanceOf[Some[String]].get)
+
+        if (value.contains("description"))
+          dataValues += StringDataValue("description", value.get("description").asInstanceOf[Some[String]].get)
+
+        if (value.contains("website"))
+          dataValues += StringDataValue("url", value.get("website").asInstanceOf[Some[String]].get)
+
+        if (value.contains("author"))
+          dataValues += StringListValue("authors", Seq(value.get("author").asInstanceOf[Some[String]].get))
+
+        if (value.contains("authors"))
+          dataValues += StringListValue("authors", value.get("authors").asInstanceOf[Some[List[String]]].get)
+
+        if (value.contains("depend")) {
+          val dependencies = value.get("depend").asInstanceOf[Some[List[String]]].get.map(p => Dependency(p, Option.empty)).toSeq
+          dataValues += DependencyDataValue("dependencies", dependencies)
+        }
+
+        dataValues += DependencyDataValue("dependencies", Seq(Dependency("velocity", Option.empty)))
 
         dataValues.toSeq
       }
