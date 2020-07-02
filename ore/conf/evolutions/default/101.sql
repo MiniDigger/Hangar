@@ -8,9 +8,9 @@ DECLARE newRoles VARCHAR[] = '{}';;
 BEGIN
   FOREACH role IN ARRAY roles LOOP
     IF role = 61 THEN
-      newRoles := array_append(newRoles, 'Ore_Admin');;
+      newRoles := array_append(newRoles, 'Hangar_Admin');;
     ELSIF role = 62 THEN
-      newRoles := array_append(newRoles, 'Ore_Mod');;
+      newRoles := array_append(newRoles, 'Hangar_Mod');;
     ELSIF role = 44 THEN
       newRoles := array_append(newRoles, 'Sponge_Leader');;
     ELSIF role = 58 THEN
@@ -22,7 +22,7 @@ BEGIN
     ELSIF role = 41 THEN
       newRoles := array_append(newRoles, 'Sponge_Developer');;
     ELSIF role = 66 THEN
-      newRoles := array_append(newRoles, 'Ore_Dev');;
+      newRoles := array_append(newRoles, 'Hangar_Dev');;
     ELSIF role = 45 THEN
       newRoles := array_append(newRoles, 'Web_dev');;
     ELSIF role = 51 THEN
@@ -101,9 +101,9 @@ DECLARE newRoles INTEGER[] = '{}';;
   DECLARE role VARCHAR;;
 BEGIN
   FOREACH role IN ARRAY roles LOOP
-    IF role = 'Ore_Admin' THEN
+    IF role = 'Hangar_Admin' THEN
       newRoles := array_append(newRoles, 61);;
-    ELSIF role = 'Ore_Mod' THEN
+    ELSIF role = 'Hangar_Mod' THEN
       newRoles := array_append(newRoles, 62);;
     ELSIF role = 'Sponge_Leader' THEN
       newRoles := array_append(newRoles, 44);;
@@ -115,7 +115,7 @@ BEGIN
       newRoles := array_append(newRoles, 3);;
     ELSIF role = 'Sponge_Developer' THEN
       newRoles := array_append(newRoles, 41);;
-    ELSIF role = 'Ore_Dev' THEN
+    ELSIF role = 'Hangar_Dev' THEN
       newRoles := array_append(newRoles, 66);;
     ELSIF role = 'Web_dev' THEN
       newRoles := array_append(newRoles, 45);;

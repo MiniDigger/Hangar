@@ -4,13 +4,13 @@ ALTER TABLE roles
     ADD COLUMN permission BIT(64) NOT NULL DEFAULT B'0'::BIT(64);
 UPDATE roles r
 SET permission = (-1)::BIT(64)
-WHERE r.name = 'Ore_Admin';
+WHERE r.name = 'Hangar_Admin';
 UPDATE roles r
 SET permission = (1::BIT(64) << 27) | (1::BIT(64) << 26) | (1::BIT(64) << 25) | (1::BIT(64) << 24)
-WHERE r.name = 'Ore_Mod';
+WHERE r.name = 'Hangar_Mod';
 UPDATE roles r
 SET permission = (1::BIT(64) << 32) | (1::BIT(64) << 34) | (1::BIT(64) << 35) | (1::BIT(64) << 40)
-WHERE r.name = 'Ore_Dev';
+WHERE r.name = 'Hangar_Dev';
 UPDATE roles r
 SET permission = (1::BIT(64) << 32) | (1::BIT(64) << 35)
 WHERE r.name = 'Web_Dev';
@@ -83,10 +83,10 @@ ALTER TABLE roles
 
 UPDATE roles r
 SET trust = 5
-WHERE r.name = 'Ore_Admin';
+WHERE r.name = 'Hangar_Admin';
 UPDATE roles r
 SET trust = 2
-WHERE r.name = 'Ore_Mod';
+WHERE r.name = 'Hangar_Mod';
 UPDATE roles r
 SET trust = 5
 WHERE r.name = 'Project_Owner';

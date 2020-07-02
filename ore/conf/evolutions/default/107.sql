@@ -34,14 +34,14 @@ CREATE TABLE roles (
 );
 
 INSERT INTO roles (id, name, category, trust, title, color, is_assignable, rank)
-VALUES (1, 'Ore_Admin', 'global', 5, 'Ore Admin', '#DC0000', TRUE, NULL),
-       (2, 'Ore_Mod', 'global', 2, 'Ore Moderator', '#0096FF', TRUE, NULL),
+VALUES (1, 'Hangar_Admin', 'global', 5, 'Hangar Admin', '#DC0000', TRUE, NULL),
+       (2, 'Hangar_Mod', 'global', 2, 'Hangar Moderator', '#0096FF', TRUE, NULL),
        (3, 'Sponge_Leader', 'global', 0, 'Sponge Leader', '#FFC800', TRUE, NULL),
        (4, 'Team_Leader', 'global', 0, 'Team Leader', '#FFC800', TRUE, NULL),
        (5, 'Community_Leader', 'global', 0, 'Community Leader', '#FFC800', TRUE, NULL),
        (6, 'Sponge_Staff', 'global', 0, 'Sponge Staff', '#FFC800', TRUE, NULL),
        (7, 'Sponge_Developer', 'global', 0, 'Sponge Developer', '#00DC00', TRUE, NULL),
-       (8, 'Ore_Dev', 'global', 0, 'Ore Developer', '#FF8200', TRUE, NULL),
+       (8, 'Hangar_Dev', 'global', 0, 'Hangar Developer', '#FF8200', TRUE, NULL),
        (9, 'Web_Dev', 'global', 0, 'Web Developer', '#0000FF', TRUE, NULL),
        (10, 'Documenter', 'global', 0, 'Documenter', '#0096FF', TRUE, NULL),
        (11, 'Support', 'global', 0, 'Support', '#0096FF', TRUE, NULL),
