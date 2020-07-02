@@ -272,16 +272,22 @@ CREATE MATERIALIZED VIEW home_projects AS
                                  THEN substring(pvti.data FROM '^\d+\.(\d+)\.\d+(?:\.\d+)?$')
                              WHEN pvti.name = 'Lantern'
                                  THEN NULL --TODO Change this once Lantern changes to SpongeVanilla's format
+                             WHEN pvti.name = 'Paper'
+                                 THEN substring(pvti.data FROM '^\d+\.(\d+)\.\d+(?:\.\d+)?$')
+                             WHEN pvti.name = 'Waterfall'
+                                 THEN substring(pvti.data FROM '^\d+\.(\d+)\.\d+(?:\.\d+)?$')
+                             WHEN pvti.name = 'Velocity'
+                                 THEN substring(pvti.data FROM '^\d+\.(\d+)\.\d+(?:\.\d+)?$')
                              ELSE NULL
                              END AS platform_version,
                          pvti.color
                   FROM project_version_tags pvti
-                  WHERE pvti.name IN ('Sponge', 'SpongeForge', 'SpongeVanilla', 'Forge', 'Lantern')
+                  WHERE pvti.name IN ('Sponge', 'SpongeForge', 'SpongeVanilla', 'Forge', 'Lantern', 'Paper', 'Waterfall', 'Velocity')
                     AND pvti.data IS NOT NULL
               ) pvt ON pv.id = pvt.version_id
               WHERE pv.visibility = 1
                 AND pvt.name IN
-                    ('Sponge', 'SpongeForge', 'SpongeVanilla', 'Forge', 'Lantern')
+                    ('Sponge', 'SpongeForge', 'SpongeVanilla', 'Forge', 'Lantern', 'Paper', 'Waterfall', 'Velocity')
                 AND pvt.platform_version IS NOT NULL) sq
         WHERE sq.row_num = 1
         ORDER BY sq.platform_version DESC)
@@ -528,16 +534,22 @@ CREATE MATERIALIZED VIEW home_projects AS
                                  THEN substring(pvti.data FROM '^\d+\.(\d+)\.\d+(?:\.\d+)?$')
                              WHEN pvti.name = 'Lantern'
                                  THEN NULL --TODO Change this once Lantern changes to SpongeVanilla's format
+                             WHEN pvti.name = 'Paper'
+                                 THEN substring(pvti.data FROM '^\d+\.(\d+)\.\d+(?:\.\d+)?$')
+                             WHEN pvti.name = 'Waterfall'
+                                 THEN substring(pvti.data FROM '^\d+\.(\d+)\.\d+(?:\.\d+)?$')
+                             WHEN pvti.name = 'Velocity'
+                                 THEN substring(pvti.data FROM '^\d+\.(\d+)\.\d+(?:\.\d+)?$')
                              ELSE NULL
                              END AS platform_version,
                          pvti.color
                   FROM project_version_tags pvti
-                  WHERE pvti.name IN ('Sponge', 'SpongeForge', 'SpongeVanilla', 'Forge', 'Lantern')
+                  WHERE pvti.name IN ('Sponge', 'SpongeForge', 'SpongeVanilla', 'Forge', 'Lantern', 'Paper', 'Waterfall', 'Velocity')
                     AND pvti.data IS NOT NULL
               ) pvt ON pv.id = pvt.version_id
               WHERE pv.visibility = 1
                 AND pvt.name IN
-                    ('Sponge', 'SpongeForge', 'SpongeVanilla', 'Forge', 'Lantern')
+                    ('Sponge', 'SpongeForge', 'SpongeVanilla', 'Forge', 'Lantern', 'Paper', 'Waterfall', 'Velocity')
                 AND pvt.platform_version IS NOT NULL) sq
         WHERE sq.row_num = 1
         ORDER BY sq.platform_version DESC)
