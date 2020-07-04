@@ -52,7 +52,7 @@ play {
         }
 
         hosts {
-            allowed = [".minidigger.me", "localhost:9000", "localhost:9443"]
+            allowed = [".minidigger.me", "localhost:9000", "localhost:9443", "hangar_app:9000"]
         }
     }
 
